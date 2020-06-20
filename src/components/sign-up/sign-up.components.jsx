@@ -2,7 +2,12 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
+
 import './sign-up.styles.scss';
+
+const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  );
 
 
 class SignUp extends React.Component{
@@ -13,9 +18,16 @@ class SignUp extends React.Component{
             displayName:'',
             email:'',
             password:'',
-            confirmPassword:''
+            confirmPassword: '',
+            errors: {
+                displayName: '',
+                email: '',
+                password: '',
+                confirmPassword:''
+              }
         };
     }
+    
 
     handleSubmit = async event => {
         event.preventDefault();
@@ -40,16 +52,44 @@ class SignUp extends React.Component{
         }
     };
 
-    handleChange = event => {
-        const { name, value} = event.target; 
-
-        this.setState(
-            {[name]:value}
-        );
-    };
+    handleChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        let errors = this.state.errors;
+    
+        switch (name) {
+          case 'displayName': 
+            errors.displayName = 
+              value.length < 5
+                ? 'Display must be at least 5 characters long!'
+                : '';
+            break;
+          case 'email': 
+            errors.email = 
+              validEmailRegex.test(value)
+                ? ''
+                : 'Email is not valid!';
+            break;
+          case 'password': 
+            errors.password = 
+              value.length >= 8
+                ? 'Password must be at least 8 characters long!'
+                : '';
+            break;
+           case 'confirmPassword':
+               errors.confirmPassword =
+               value.length >= 8 
+                ? 'Password must be at least 8 characters long!'
+                : '';
+          default:
+            break;
+        }
+    
+        this.setState({errors, [name]: value});
+    }
 
     render(){
-        const {displayName,email,password,confirmPassword } = this.state;
+        const {displayName,email,password,confirmPassword,errors } = this.state;
        return(
         <div className='sign-up'>
             <h2 className='title'>I do not have an account</h2>
@@ -63,6 +103,7 @@ class SignUp extends React.Component{
                     onChange = {this.handleChange}
                     label='Display Name'
                     required
+                    
                 />
                 <FormInput
                     type='email'
