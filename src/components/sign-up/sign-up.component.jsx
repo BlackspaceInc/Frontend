@@ -5,9 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import './sign-up.styles.scss';
 
-const validEmailRegex = RegExp(
-    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-  );
+const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
 
 class SignUp extends React.Component{
@@ -77,10 +75,11 @@ class SignUp extends React.Component{
                 : '';
             break;
            case 'confirmPassword':
-               errors.confirmPassword =
+            errors.confirmPassword =
                value.length >= 8 
                 ? 'Password must be at least 8 characters long!'
                 : '';
+            break;
           default:
             break;
         }
@@ -89,7 +88,7 @@ class SignUp extends React.Component{
     }
 
     render(){
-        const {displayName,email,password,confirmPassword,errors } = this.state;
+        const {displayName,email,password,confirmPassword, errors } = this.state;
        return(
         <div className='sign-up'>
             <h2 className='title'>I do not have an account</h2>
@@ -103,7 +102,6 @@ class SignUp extends React.Component{
                     onChange = {this.handleChange}
                     label='Display Name'
                     required
-                    
                 />
                 <FormInput
                     type='email'
