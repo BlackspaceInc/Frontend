@@ -1,6 +1,6 @@
 import React from 'react';
 import {SearchBar} from '../../components/search-bar/search-bar.component.jsx';
-import {ProductList} from '../../components/product-list/product-list.component';
+import ProductList from '../../components/product-list/product-list.component';
 import FooterPage from '../../pages/footerpage/footerpage.component';
 
 import './homepage.styles.scss';
@@ -13,7 +13,7 @@ const HomePage = () => (
         <SearchBar/>
         <ProductList/>
         {/* <div className='other options'> space for more product seelctions </div> */}
-        <FooterPage/>
+        {/* <FooterPage/> */}
     </div>
 );
 

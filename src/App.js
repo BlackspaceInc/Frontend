@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+//import './App.css';
+import 'semantic-ui-css/semantic.min.css'
 import {Route, Switch} from 'react-router-dom';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
