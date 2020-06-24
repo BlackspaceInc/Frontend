@@ -3,7 +3,7 @@ import './product-list.styles.scss';
 import Product from '../../components/product/product.component';
 
 
-export const ProductList = () => (
+const ProductList = () => (
     //add logic to filter and show some cards 
     <div className='collection-preview'>
         <h1 className='title'>Category</h1> 
@@ -11,7 +11,6 @@ export const ProductList = () => (
             <Product/>
         </div>
     </div>
+)
 
-
-);
-
+export default ProductList;

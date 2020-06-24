@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {ProductList} from '../../components/product-list/product-list.component';
-import {Product} from '../../components/product/product.component';
-
+import ProductList from '../../components/product-list/product-list.component';
+import Product from '../../components/product/product.component';
 
 
 describe('Product-list component', () => {
