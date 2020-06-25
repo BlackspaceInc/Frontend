@@ -11,11 +11,12 @@ import {
     LOGOUT,
     CLEAR_PROFILE
 } from './types';
+import {backend} from "../global";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
     try {
-        const res = await axios.get('http://localhost:9100/api/auth');
+        const res = await axios.get(backend.api_location + "/v1/user/login");
 
         dispatch({
             type: USER_LOADED,
@@ -39,14 +40,16 @@ export const register = ({ firstname, lastname, email, username, password }) => 
     const body = JSON.stringify({ firstname, lastname, email, username, password });
 
     try {
-        const res = await axios.post('/v1/users/signup', body, config);
+        const res = await axios.post(backend.api_location + '/v1/user/signup', body, config);
+        console.log(res)
 
         dispatch({
             type: REGISTER_SUCCESS,
-            payload: res.data
+            payload: res.data.id
         });
-        dispatch(loadUser());
+
     } catch (err) {
+        console.log(err)
         const errors = err.response.data.errors;
 
         if (errors) {
@@ -70,22 +73,23 @@ export const login = (username, password) => async (dispatch) => {
     const body = JSON.stringify({ username, password });
 
     try {
-        const res = await axios.post('http://localhost:9100/v1/users/login', body, config);
+        const res = await axios.post(backend.api_location + '/v1/user/login', body, config);
+        console.log(res)
 
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
         });
 
-        dispatch(loadUser());
     } catch (err) {
         console.log(err)
+        /*
         const errors = err.response.data.errors;
 
         if (errors) {
             errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
         }
-
+        */
         dispatch({
             type: LOGIN_FAIL
         });

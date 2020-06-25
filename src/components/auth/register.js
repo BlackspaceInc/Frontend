@@ -47,7 +47,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             setAlert("Firstname or Lastname cannot be null")
         }
 
-        console.log(firstname)
         register({ email, firstname, lastname, password, username });
     };
 

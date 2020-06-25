@@ -7,12 +7,12 @@ import { login } from '../../actions/auth';
 // define login component function
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
 
     // obtain the credentials from the form
-    const { email, password } = formData;
+    const { username, password } = formData;
 
     // define event handlers
     const onChange = (e) =>
@@ -21,12 +21,12 @@ const Login = ({ login, isAuthenticated }) => {
     const onSubmit = async (e) => {
         // prevent default behavior
         e.preventDefault();
-        login(email, password);
+        login(username, password);
     };
 
     // route to the dashboard view upon authentication
     if (isAuthenticated) {
-        return <Redirect to="/dashboard" />;
+        return <Redirect to="/dashboard"/>;
     }
 
     return (
@@ -38,10 +38,10 @@ const Login = ({ login, isAuthenticated }) => {
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <input
-                        type="email"
-                        placeholder="Email Address"
-                        name="email"
-                        value={email}
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        value={username}
                         onChange={onChange}
                         required
                     />

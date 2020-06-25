@@ -8,7 +8,7 @@ const api = axios.create({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : 'http://localhost:3005',
         'Access-Control-Allow-Credentials': 'true'
-    }
+    },
 });
 /**
  intercept any error responses from the api

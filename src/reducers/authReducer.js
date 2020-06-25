@@ -8,6 +8,7 @@ import {
     LOGOUT,
     ACCOUNT_DELETED
 } from '../actions/types';
+import setAuthToken from "../utilities/authentication/authentication";
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -35,6 +36,7 @@ export default function (state = initialState, action) {
                 loading: false
             };
         case LOGIN_SUCCESS:
+            setAuthToken(payload.token)
             return {
                 ...state,
                 ...payload,

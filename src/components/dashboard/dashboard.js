@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import spinner from "../layout/spinner";
+import setAuthToken from "../../utilities/authentication/authentication";
 
-const Dashboard = ({auth: { user }, profile: { profile, loading }}) => {
-    return loading && profile === null ? (
+const Dashboard = ({token, isAuthenticated, loading}) => {
+    // set the token to be used by all further requests
+    var profile = null
+    return loading === null ? (
         <spinner />
     ) : (
         <Fragment>
             <h1 className='large text-primary'>Dashboard</h1>
             <p className='lead'>
-                <i className='fas fa-user' /> Welcome {user && user.name}
+                <i className='fas fa-user' /> Welcome
             </p>
             {profile !== null ? (
                 <Fragment>
@@ -30,13 +33,15 @@ const Dashboard = ({auth: { user }, profile: { profile, loading }}) => {
 };
 
 Dashboard.propTypes = {
-    auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
+    token: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    profile: state.profile
+    token: state.token,
+    isAuthenticated: state.isAuthenticated,
+    loading: state.loading,
 });
 
 export default connect(
