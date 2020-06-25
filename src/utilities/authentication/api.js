@@ -3,9 +3,11 @@ import store from '../store';
 import { LOGOUT } from '../actions/types';
 
 const api = axios.create({
-    baseURL: '/api',
+    baseURL: 'http://localhost:9100/',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : 'http://localhost:3005',
+        'Access-Control-Allow-Credentials': 'true'
     }
 });
 /**

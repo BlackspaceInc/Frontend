@@ -24,7 +24,6 @@
     "react-dom": "^16.13.1",
     "react-hook-form": "^5.7.2",
     "react-native-elements": "^2.0.2",
-    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-sticky-footer": "^0.1.0-rc3",
@@ -52,5 +51,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2",
+    "react-redux": "^7.2.0"
+  },
+  "proxy": "http://localhost:9100"
 }
