@@ -5,7 +5,20 @@ import SmallCompanyAdCard from "./companyads-card/small-company-ads-card.compone
 import DirectoryFooter from "./directory-footer/directory-footer.component";
 import "./company-directory.styles.scss"
 
+/**
+ * Encapsulates the company directory component
+ * 
+ * @class CompanyDirectoryComponent
+ * @extends {React.Component}
+ */
 class CompanyDirectoryComponent extends React.Component {
+    /**
+     * Renders the component of interest
+     * 
+     * @returns 
+     * 
+     * @memberOf CompanyDirectoryComponent
+     */
     render() {
         return (
             <div className="wrapper">

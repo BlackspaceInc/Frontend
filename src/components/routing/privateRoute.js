@@ -4,6 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from "../layout/spinner";
 
+/**
+ * Routing handler for authenticated users
+ * 
+ * @param {any} {
+ *                           component: Component,
+ *                           auth: { isAuthenticated, loading },
+ *                           ...rest
+ *                       } 
+ */
 const PrivateRoute = ({
                           component: Component,
                           auth: { isAuthenticated, loading },

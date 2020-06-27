@@ -1,7 +1,19 @@
 import React from "react";
 import "../company-directory.styles.scss"
 
+/**
+ * Defines a large company card providing granular company level details
+ * 
+ * @class LargeCompanyDetailsCard
+ * @extends {React.Component}
+ */
 class LargeCompanyDetailsCard extends React.Component {
+	/**
+	 * Creates an instance of LargeCompanyDetailsCard.
+	 * @param {any} props 
+	 * 
+	 * @memberOf LargeCompanyDetailsCard
+	 */
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,6 +26,13 @@ class LargeCompanyDetailsCard extends React.Component {
 		};
 	}
 
+	/**
+	 * renders a company details card
+	 * 
+	 * @returns 
+	 * 
+	 * @memberOf LargeCompanyDetailsCard
+	 */
 	render() {
 		var className = (this.props.leftJustify === true) ? "grid g1" : "grid g4"
 

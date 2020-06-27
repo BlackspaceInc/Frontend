@@ -5,6 +5,12 @@ import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
 // define login component function
+/**
+ * Functional component providing a custom login/registration form
+ * 
+ * @param {any} { login, isAuthenticated } 
+ * @returns 
+ */
 const CustomSignInComponent = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         username: '',

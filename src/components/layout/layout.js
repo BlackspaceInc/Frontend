@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
 
+/**
+ * Function Page Not Found Component
+ * 
+ * @returns 
+ */
 const NotFound = () => {
     return (
         <Fragment>

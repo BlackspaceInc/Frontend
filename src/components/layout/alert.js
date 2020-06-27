@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+/**
+ * Functional Alert component
+ * 
+ * @param {any} { alerts } 
+ */
 const Alert = ({ alerts }) =>
     alerts !== undefined &&
     alerts !== null &&

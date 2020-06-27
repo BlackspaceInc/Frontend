@@ -1,7 +1,19 @@
 import React from "react";
 import "../company-directory.styles.scss"
 
+/**
+ * Defines a company details card (small) that provides granular company level details
+ * 
+ * @class SmallCompanyDetailsCard
+ * @extends {React.Component}
+ */
 class SmallCompanyDetailsCard extends React.Component {
+	/**
+	 * Creates an instance of SmallCompanyDetailsCard.
+	 * @param {any} props 
+	 * 
+	 * @memberOf SmallCompanyDetailsCard
+	 */
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -18,6 +30,13 @@ class SmallCompanyDetailsCard extends React.Component {
 		};
 	}
 
+	/**
+	 * renders the small company details card and all relevant fields
+	 * 
+	 * @returns 
+	 * 
+	 * @memberOf SmallCompanyDetailsCard
+	 */
 	render() {
 		var className = (this.props.leftJustify === true) ? "grid g2" : "grid g3"
 

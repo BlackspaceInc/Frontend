@@ -10,6 +10,12 @@ import {setAlert} from "../../actions/alert";
 import {register} from "../../actions/auth";
 import "./oauth-signup.styles.scss";
 
+/**
+ * Functional Signup Component With Oauth
+ * 
+ * @param {any} {setAlert, register, isAuthenticated } 
+ * @returns 
+ */
 const OauthSignupComponent = ({setAlert, register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         firstname: '',
