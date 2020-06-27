@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from "react";
-import "./oauthlogin.scss"
+import "./oauthlogin.tyles.scss"
 import {Redirect} from "react-router-dom";
 import {containsInteger, isEmpty} from "../../../utilities/validation/validation";
 import PropTypes from "prop-types";
@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {setAlert} from "../../../actions/alert";
 import {register} from "../../../actions/auth";
 
-const OauthLogin = ({setAlert, register, isAuthenticated }) => {
+const OauthloginComponent = ({setAlert, register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -83,7 +83,7 @@ const OauthLogin = ({setAlert, register, isAuthenticated }) => {
     )
 }
 
-OauthLogin.propTypes = {
+OauthloginComponent.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
@@ -93,4 +93,4 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, register })(OauthLogin);
+export default connect(mapStateToProps, { setAlert, register })(OauthloginComponent);

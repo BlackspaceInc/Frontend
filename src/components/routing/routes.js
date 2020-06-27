@@ -5,8 +5,7 @@ import PrivateRoute from "./privateRoute";
 import NotFound from "../layout/layout";
 import Alert from "../layout/alert";
 import Login from "../auth/login";
-import Register from "../auth/register";
-import OauthLogin from "../auth/oauthlogin/oauthlogin";
+import OauthLogin from "../auth/oauthlogin/oauthlogin.component";
 
 const Routes = props => {
     return (
