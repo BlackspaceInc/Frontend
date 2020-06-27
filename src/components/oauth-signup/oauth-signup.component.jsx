@@ -1,20 +1,23 @@
+/*jshint esversion: 9 */
 import React, {Fragment, useState} from "react";
-import "./oauthlogin.tyles.scss"
 import {Redirect} from "react-router-dom";
-import {containsInteger, isEmpty} from "../../../utilities/validation/validation";
+import {
+    isValidSignupCredentials
+} from "../../utilities/validation/validation";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {setAlert} from "../../../actions/alert";
-import {register} from "../../../actions/auth";
+import {setAlert} from "../../actions/alert";
+import {register} from "../../actions/auth";
+import "./oauth-signup.styles.scss";
 
-const OauthloginComponent = ({setAlert, register, isAuthenticated }) => {
+const OauthSignupComponent = ({setAlert, register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
         email: '',
         username: '',
         password: '',
-        password2: ''
+        password2: '',
     });
 
     const { firstname, lastname, email, username, password, password2 } = formData;
@@ -24,31 +27,10 @@ const OauthloginComponent = ({setAlert, register, isAuthenticated }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (password !== password2) {
-            setAlert('Passwords do not match', 'danger');
-        }
-
-        if(password.length <= 10){
-            setAlert("Password must contain more than 10 characters")
-        }
-
-        if(!containsInteger(password)){
-            setAlert("Password must contain an integers")
-        }
-
-        if(isEmpty(username)){
-            setAlert("Username cannot be null")
-        }
-
-        if(isEmpty(email)){
-            setAlert("Email cannot be null")
-        }
-
-        if(isEmpty(firstname) || isEmpty(lastname)){
-            setAlert("Firstname or Lastname cannot be null")
-        }
-
-        register({ email, firstname, lastname, password, username });
+		// perform input field validation
+        const res = isValidSignupCredentials(firstname,lastname, email, username, password, password2)
+		// emit an alert for malformatted inputs or perform registration call to the backend
+        res.isValid === true ? setAlert(res.msg) : register({ email, firstname, lastname, password, username });
     };
 
     if (isAuthenticated) {
@@ -83,7 +65,7 @@ const OauthloginComponent = ({setAlert, register, isAuthenticated }) => {
     )
 }
 
-OauthloginComponent.propTypes = {
+OauthSignupComponent.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
@@ -93,4 +75,4 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, register })(OauthloginComponent);
+export default connect(mapStateToProps, { setAlert, register })(OauthSignupComponent);

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from "../dashboard/dashboard";
+import Dashboard from "../dashboard/dashboard.component";
 import PrivateRoute from "./privateRoute";
 import NotFound from "../layout/layout";
 import Alert from "../layout/alert";
-import Login from "../auth/login";
-import OauthLogin from "../auth/oauthlogin/oauthlogin.component";
+import Login from "../custom-sign-in/custom-sign-in.component";
+import OauthLogin from "../oauth-signup/oauth-signup.component";
 
 const Routes = props => {
     return (

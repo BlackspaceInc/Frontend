@@ -12,11 +12,23 @@ import {
     CLEAR_PROFILE
 } from './types';
 import {backend} from "../global";
+import {isEmpty} from "../utilities/validation/validation";
 
-// Load User
+
+/**
+ * performs a get request to the backend for the user of interest
+ */
 export const loadUser = () => async (dispatch) => {
     try {
         const res = await axios.get(backend.api_location + "/v1/user/login");
+
+        if(isEmpty(res.data)){
+            throw "no data returned";
+        }
+
+        if(!isEmpty(res.data.err)){
+            throw res.data.err;
+        }
 
         dispatch({
             type: USER_LOADED,
@@ -29,7 +41,14 @@ export const loadUser = () => async (dispatch) => {
     }
 };
 
-// Register User
+/**
+ * register attempts to register a user in our backend
+ * @param {string} firstname
+ * @param {string} lastname
+ * @param {string} email
+ * @param {string} username
+ * @param {string} password
+ */
 export const register = ({ firstname, lastname, email, username, password }) => async (dispatch) => {
     const config = {
         headers: {
@@ -41,7 +60,14 @@ export const register = ({ firstname, lastname, email, username, password }) => 
 
     try {
         const res = await axios.post(backend.api_location + '/v1/user/signup', body, config);
-        console.log(res)
+
+        if(isEmpty(res.data)){
+            throw "no data returned";
+        }
+
+        if(!isEmpty(res.data.err)){
+            throw res.data.err;
+        }
 
         dispatch({
             type: REGISTER_SUCCESS,
@@ -62,8 +88,11 @@ export const register = ({ firstname, lastname, email, username, password }) => 
     }
 };
 
-// Login User
-export const login = (username, password) => async (dispatch) => {
+/**
+ * login attempts to login a user in our backend
+ * @param {string} username
+ * @param {string} password
+ */export const login = (username, password) => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -74,7 +103,13 @@ export const login = (username, password) => async (dispatch) => {
 
     try {
         const res = await axios.post(backend.api_location + '/v1/user/login', body, config);
-        console.log(res)
+        if(isEmpty(res.data)){
+            throw "no data returned";
+        }
+
+        if(!isEmpty(res.data.err)){
+            throw res.data.err;
+        }
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -82,22 +117,22 @@ export const login = (username, password) => async (dispatch) => {
         });
 
     } catch (err) {
-        console.log(err)
-        /*
-        const errors = err.response.data.errors;
 
-        if (errors) {
-            errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+        if (err) {
+            err.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
         }
-        */
+
         dispatch({
             type: LOGIN_FAIL
         });
     }
 };
 
-// Logout / Clear Profile
+/**
+ * logout attempts to logout a user in our backend
+ */
 export const logout = () => (dispatch) => {
+    // TODO: enhance this
     dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });
 };

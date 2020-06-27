@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import spinner from "../layout/spinner";
-import setAuthToken from "../../utilities/authentication/authentication";
 
-const Dashboard = ({token, isAuthenticated, loading}) => {
+const DashboardComponent = ({token, isAuthenticated, loading}) => {
     // set the token to be used by all further requests
     var profile = null
     return loading === null ? (
@@ -32,7 +31,7 @@ const Dashboard = ({token, isAuthenticated, loading}) => {
     );
 };
 
-Dashboard.propTypes = {
+DashboardComponent.propTypes = {
     token: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -46,4 +45,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-)(Dashboard);
+)(DashboardComponent);

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
 // define login component function
-const Login = ({ login, isAuthenticated }) => {
+const CustomSignInComponent = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -56,7 +56,7 @@ const Login = ({ login, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <input type="submit" className="btn btn-primary" value="Login" />
+                <input type="submit" className="btn btn-primary" value="CustomSignInComponent" />
             </form>
             <p className="my-1">
                 Don't have an account? <Link to="/register">Sign Up</Link>
@@ -65,7 +65,7 @@ const Login = ({ login, isAuthenticated }) => {
     );
 };
 
-Login.propTypes = {
+CustomSignInComponent.propTypes = {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
@@ -74,4 +74,4 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login })(CustomSignInComponent);
