@@ -2,8 +2,6 @@
 name: Continuous Integration
 #actions below will run for every push and pull request submitted to master or develop branch
 on: 
-#  Trigger the workflow on push or pull request,
-#  but only for the master branch
   push:
     branches:
       - master
@@ -18,6 +16,16 @@ jobs:
     runs-on: ubuntu-latest    
   steps:
     - uses: actions/checkout@v2
+    - name: Checkout my-organization/awesome-action
+      uses: actions/checkout@v2
+      with:
+        repository: BlackspaceInc/Frontend/.github/workflows/continuous-integration.yml
+        ref: refs/heads/master
+                    # GitHub's personal access token with access to `my-organization/awesome-action`
+        token: $
+        persist-credentials: false
+        path: ./.github/workflows/continuous-integration.yml
+        - uses: ./.github/workflows/continuous-integration.yml
     - name: Uses Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
