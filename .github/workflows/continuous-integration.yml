@@ -5,10 +5,7 @@ name: CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
-    branches: [ master , develop, testcicd]
-  pull_request:
-    branches: [ master , develop]
+  [push , pull_request]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -16,19 +13,21 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@master
-    - name: Install
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: install
-    - name: Lint
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: lint
-    - name: Test
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: test
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # yarn build and run 
+    - name: action-yarn
+      uses: comchangs/action-yarn@v0.1-beta
+
+  tests:
+    name: run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Adzz/jest_test_action@v1.0.0
+        with:
+          package-manager: npm
+          command: test:ci
