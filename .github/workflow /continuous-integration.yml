@@ -2,10 +2,16 @@
 name: Continuous Integration
 #actions below will run for every push and pull request submitted to master or develop branch
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
   push:
-    branches: [ develop, master ] 
+    branches:
+      - master
+      - develop
   pull_request:
-    branches: [ develop, master ]
+    branches:
+      - master
+      - develop
 jobs:
   buildAndTest:
     name: Build and Test
