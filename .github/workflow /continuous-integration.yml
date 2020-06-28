@@ -1,8 +1,9 @@
 # this file will build, run tests, and build on push and pull request 
 name: Continuous Integration
+#actions below will run for every push and pull request submitted to master or develop branch
 on:
   push:
-    branches: [ develop, master ]
+    branches: [ develop, master ] 
   pull_request:
     branches: [ develop, master ]
 jobs:
