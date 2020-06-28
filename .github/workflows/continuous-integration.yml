@@ -17,15 +17,15 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest    
   steps:
-  - uses: comchangs/action-yarn@v0.1-beta
-  - name: Uses Node.js ${{ matrix.node-version }}
-    uses: actions/setup-node@v1
-    with:
-      node-version: ${{ matrix.node-version }}
-  - run: npm install -g yarn # Extra Step
-  - name: yarn install, build, and test
-  run: |
-    yarn install
-    yarn run build
-    yarn test
+    - uses: actions/checkout@v2
+    - name: Uses Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install -g yarn # Extra Step
+    - name: yarn install, build, and test
+    run: |
+      yarn install
+      yarn run build
+      yarn test
       
