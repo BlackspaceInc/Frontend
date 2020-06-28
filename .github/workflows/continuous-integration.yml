@@ -17,17 +17,11 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest    
     steps:
-      - uses: CultureHQ/actions-yarn@v1.0.1
+      - uses: actions/checkout@v2
       - name: Install Dependencies
-        run: yarn
-      - name: Read package.json
-        uses: tyankatsu0105/read-package-version-actions@v1
-        id: package-version
-      - name: Show version number
-        run: echo "Version is ${{ steps.package-version.outputs.version }}"
-        # Version is 1.0.0
+        run: npm
       - name: Build
-        run: yarn build
+        run: npm build  --if-present
       - name: Test
-        run: yarn test --watchAll=false
+        run: npm test --watchAll=false
       
