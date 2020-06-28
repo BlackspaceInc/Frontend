@@ -5,14 +5,10 @@ on:
 #  Trigger the workflow on push or pull request,
 #  but only for the master branch
   push:
-    paths:
-      - '**.js'
     branches:
       - master
       - develop
   pull_request:
-    paths:
-      - '**.js'
     branches:
       - master
       - develop
@@ -24,9 +20,14 @@ jobs:
       - uses: CultureHQ/actions-yarn@v1.0.1
       - name: Install Dependencies
         run: yarn
+      - name: Read package.json
+        uses: tyankatsu0105/read-package-version-actions@v1
+        id: package-version
+      - name: Show version number
+        run: echo "Version is ${{ steps.package-version.outputs.version }}"
+        # Version is 1.0.0
       - name: Build
         run: yarn build
       - name: Test
         run: yarn test --watchAll=false
       
-        
