@@ -1,39 +1,34 @@
-# this file will build, run tests, and build on push and pull request 
-name: Continuous Integration
-#actions below will run for every push and pull request submitted to master or develop branch
-on: 
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
   push:
-    branches:
-      - master
-      - develop
+    branches: [ master , develop]
   pull_request:
-    branches:
-      - master
-      - develop
+    branches: [ master , develop]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  buildAndTest:
-    name: Build and Test
-    runs-on: ubuntu-latest    
-  steps:
-    - uses: actions/checkout@v2
-    - name: Checkout my-organization/awesome-action
-      uses: actions/checkout@v2
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@master
+    - name: Install
+      uses: CultureHQ/actions-yarn@master
       with:
-        repository: BlackspaceInc/Frontend/.github/workflows/continuous-integration.yml
-        ref: refs/heads/master
-                    # GitHub's personal access token with access to `my-organization/awesome-action`
-        token: $
-        persist-credentials: false
-        path: BlackspaceInc/Frontend/.github/workflows/continuous-integration.yml
-        - uses: .BlackspaceInc/Frontend/.github/workflows/continuous-integration.yml
-    - name: Uses Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+        args: install
+    - name: Lint
+      uses: CultureHQ/actions-yarn@master
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install -g yarn # Extra Step
-    - name: yarn install, build, and test
-      run: |
-        yarn install
-        yarn build
-        yarn test
-      
+        args: lint
+    - name: Test
+      uses: CultureHQ/actions-yarn@master
+      with:
+        args: test
