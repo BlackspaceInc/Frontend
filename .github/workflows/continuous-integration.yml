@@ -24,8 +24,8 @@ jobs:
                     # GitHub's personal access token with access to `my-organization/awesome-action`
         token: $
         persist-credentials: false
-        path: ./.github/workflows/continuous-integration.yml
-        - uses: ./.github/workflows/continuous-integration.yml
+        path: BlackspaceInc/Frontend/.github/workflows/continuous-integration.yml
+        - uses: .BlackspaceInc/Frontend/.github/workflows/continuous-integration.yml
     - name: Uses Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
