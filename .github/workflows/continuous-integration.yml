@@ -1,19 +1,18 @@
 # this file will build, run tests, and build on push and pull request 
 name: Continuous Integration
 #actions below will run for every push and pull request submitted to master or develop branch
-on: [push]
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
-  #push:
-  #   paths:
-  #   - "**/*.js"
-  #   branches:
-  #     - master
-  #     - develop
-  # pull_request:
-  #   branches:
-  #     - master
-  #     - develop
+on: 
+#  Trigger the workflow on push or pull request,
+#  but only for the master branch
+  push:
+    paths:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
 jobs:
   buildAndTest:
     name: Build and Test
