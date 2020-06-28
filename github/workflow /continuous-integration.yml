@@ -1,0 +1,19 @@
+# this file will build, run tests, and build on push and pull request 
+name: Continuous Integration
+on:
+  push:
+    branches: [ develop, master ]
+  pull_request:
+    branches: [ develop, master ]
+jobs:
+  buildAndTest:
+    name: Build and Test
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test --watchAll=false
