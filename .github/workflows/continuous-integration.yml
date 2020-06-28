@@ -23,6 +23,5 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
-        uses: linchpin/action-build-yarn-npm@master
       - name: Test
         run: yarn test --watchAll=false
