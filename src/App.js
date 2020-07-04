@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
@@ -11,7 +11,7 @@ import HomePage from './pages/homepage/homepage.component';
 import Routes from "./components/routing/routes";
 
 import './App.css';
-
+import {ApolloProvider} from "@apollo/react-hooks";
 
 const App = () => {
     useEffect(() => {

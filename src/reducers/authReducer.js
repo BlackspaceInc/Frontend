@@ -6,7 +6,12 @@ import {
     LOGIN_SUCCESS,
     //LOGIN_FAIL,
     LOGOUT,
-    ACCOUNT_DELETED
+    ACCOUNT_DELETED,
+    COMPANY_LOADED_SUCCESS,
+    COMPANIES_LOADED_SUCCESS,
+    PAGINATED_COMPANIES_LOADED_SUCCESS,
+    COMPANY_LOADED_FAILED,
+    COMPANIES_LOADED_FAILED, PAGINATED_COMPANIES_LOADED_FAILED
 } from '../actions/types';
 import setAuthToken from "../utilities/authentication/authentication";
 

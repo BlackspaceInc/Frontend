@@ -1,53 +1,54 @@
 import React from "react";
 import "../company-directory.styles.scss"
+import gql from 'graphql-tag';
+import {getPaginatedThirdPartyCompanies, getThirdPartyCompanies} from "../../../actions/company";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {login} from "../../../actions/auth";
+import {GET_COMPANIES} from "../../../queries/company";
+import { useQuery } from '@apollo/react-hooks';
 
 /**
  * Defines a company card for advertising specific needs
- * 
+ *
  * @class SmallCompanyAdCard
  * @extends {React.Component}
  */
-class SmallCompanyAdCard extends React.Component {
-	/**
-	 * Creates an instance of SmallCompanyAdCard.
-	 * @param {any} props 
-	 * 
-	 * @memberOf SmallCompanyAdCard
-	 */
-	constructor(props) {
-		super(props);
-		this.state = {
-			// the headline string providing company specific details
-			topic: "",
-			// company specific contetn
-			headline: "",
-			// compnay specific footline definitions
-			footline: "",
-			// company specific tags
-			tags: "",
-			// content alignment
-			leftJustify: true,
-		};
-	}
+function SmallCompanyAdCard(props) {
 
-	/**
-	 * renders a company add card with all relevant fields
-	 * 
-	 * @returns 
-	 * 
-	 * @memberOf SmallCompanyAdCard
-	 */
-	render() {
-		var className = (this.props.leftJustify == true) ? "grid g2" : "grid g3"
-		return <div className="grid g3">
-			<div className="upper-headline">{this.props.topic}</div>
-			<div className="content atd">{this.props.details.headline}</div>
-			<div className="footline">
-				<div className="head">{this.props.details.footline}</div>
-				<div className="subhead">{this.props.details.tags}</div>
-			</div>
-		</div>;
-	}
+	var {loading, error, data} = useQuery(GET_COMPANIES())
+	console.log(error)
+
+	var className = (props.leftJustify == true) ? "grid g2" : "grid g3"
+
+	return <div className="grid g3">
+		<div className="upper-headline">{props.topic}</div>
+		<div className="content atd">{props.details.headline}</div>
+		<div className="footline">
+			<div className="head">{props.details.footline}</div>
+			<div className="subhead">{props.details.tags}</div>
+		</div>
+	</div>;
 }
 
-export default SmallCompanyAdCard;
+SmallCompanyAdCard.propTypes = {
+	getThirdPartyCompanies: PropTypes.func.isRequired,
+	leftJustify: PropTypes.bool,
+	topic: PropTypes.string,
+	headline: PropTypes.string,
+	footline: PropTypes.string,
+	tags: PropTypes.string,
+	thirdPartyCompanyName: PropTypes.string,
+	thirdPartyCompanyAddress: PropTypes.string,
+	thirdPartyCompanyWebsite: PropTypes.string,
+	thirdPartyCompanyNumber: PropTypes.string,
+	loading: PropTypes.bool,
+	companies: PropTypes.object
+};
+
+const mapStateToProps = (state) => ({
+	loading: state.thirdPartyCompanies.loading,
+	companies: state.thirdPartyCompanies.thirdPartyCompanies
+});
+
+export default connect(mapStateToProps, { getThirdPartyCompanies })(SmallCompanyAdCard);
