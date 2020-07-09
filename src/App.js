@@ -10,8 +10,19 @@ import Navbar from "./components/navbar/navbar";
 import HomePage from './pages/homepage/homepage.component';
 import Routes from "./components/routing/routes";
 
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
 
 import './App.css';
+
+/**
+ * creating an instance of Appollo client , 
+ * the apollo client connects to the backend graphql
+ */
+const client = new ApolloClient({
+    uri: 'http://localhost:9898/gql'
+});
+
 
 
 const App = () => {
@@ -19,20 +30,21 @@ const App = () => {
             setAuthToken(localStorage.token);
             store.dispatch(loadUser());
         }, []);
-
     return (
-        <Provider store={store}>
-            <Router>
-                <Fragment>
-                    <Navbar />
-                    <Switch>
-                        <Route exact path='/'  component={HomePage} />
-                        <Route path='/signin'  component={SignInAndSignUpPage} />
-                        <Route component={Routes} />
-                    </Switch>
-                </Fragment>
-            </Router>
-        </Provider>
+        <ApolloProvider client={client}>
+            <Provider store={store}>
+                <Router>
+                    <Fragment>
+                        <Navbar />
+                        <Switch>
+                            <Route exact path='/'  component={HomePage} />
+                            <Route path='/signin'  component={SignInAndSignUpPage} />
+                            <Route component={Routes} />
+                        </Switch>
+                    </Fragment>
+                </Router>
+            </Provider>
+        </ApolloProvider>
     );
 };
 

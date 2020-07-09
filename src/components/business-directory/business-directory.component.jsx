@@ -1,40 +1,37 @@
 import React from 'react';
-import { Query } from "react-apollo";
+import { Query, useQuery, useLazyQuery} from "react-apollo";
 import gql from "graphql-tag";
 
 import './business-directory.styles.scss';
 import Business from '../business/business.component';
 
-const   GET_ALL_COMPANIES = gql `
-    {
-        getCompanies {
-            name
-            address
-            links
-            number
-        }
-    }
-`;
 
-class BusinessDirectory extends React.Component{
-    render(){
-        return (
-                <Query query={GET_ALL_COMPANIES}>
-                {({ loading, error, data }) => {
-                if (loading) return <div>Fetching</div>
-                if (error) return <div>Error</div>
+
+const BusinessDirectory = () => (
+    <Query query={gql`
+        {
+            getPaginatedCompanies(limit: 15){
+                name
+                address
+                links
+                number
+                id
+            }
+        }
+    `}>
+        {({loading, error, data}) =>{
+            if(loading) return <p>loading...</p>;
+            if(error) return <p>error : {error.message}</p> 
             
-                const companiesToRender = data.getPaginatedCompanies
-            
-                return (
-                    <div>
-                        {companiesToRender.map(business => <Business key={business.id} business={business} />)}
-                    </div>
-                )
-                }}
-            </Query>
-          )
-    }
-}
+            return data.getPaginatedCompanies.map((currentBusiness) =>(
+               <div className='businessdirectory'>
+                    <Business key={currentBusiness.id} business = {currentBusiness}/>
+               </div>
+                
+            ));
+        }}
+    </Query>
+
+);
 
 export default BusinessDirectory;
