@@ -1,10 +1,9 @@
 import React from "react";
 import "../company-directory.styles.scss"
 import gql from 'graphql-tag';
-import {getPaginatedThirdPartyCompanies, getThirdPartyCompanies} from "../../../actions/company";
+import {getThirdPartyCompanies} from "../../../actions/company";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {login} from "../../../actions/auth";
 import {GET_COMPANIES} from "../../../queries/company";
 import { useQuery } from '@apollo/react-hooks';
 
