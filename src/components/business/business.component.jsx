@@ -1,30 +1,31 @@
 import React from 'react';
-import {connect } from 'react-redux';
+
 import Card from 'react-bootstrap/Card';
 
-const Business = (props) => {
-    const {  name, address,links, number, id} = props;
-    return(
-        <div key={id} className='business'>
-            {/* this should be a card component  */}
-            <p>{`${props.business.name} located at ${props.business.address}`}</p>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180"  className='image'/>
+export default class Business extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        const {name,address,links,number} = this.props.item;
+        return(
+            <div className='business-container'>
+                <Card style={{ width: '18rem' }}>
+                {/* <Card.Img src="holder.js/100px270" alt="Card image" /> */}
                 <Card.ImgOverlay>
-                    <Card.Title>${props.business.name}</Card.Title>
+                    <Card.Title>{`Company: ${name}`}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{number}</Card.Subtitle>
                     <Card.Text>
-                        ${props.business.address}
+                       Located at  {address}
                     </Card.Text>
+                    <Card.Link href={`${links}`}>Go to their website</Card.Link>
                 </Card.ImgOverlay>
-                <Card.ImgOverlay>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
-                </Card.ImgOverlay>
-            </Card>
-        </div>
-        
-    )
+                </Card>
+            </div>
+        )
+    }
+    
 }
 
 
-export default connect(null, null)(Business);

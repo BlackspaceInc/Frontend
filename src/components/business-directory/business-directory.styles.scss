@@ -1,6 +1,7 @@
-.businessdirectory{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    justify-content: space-between;
-}
+.business-list {
+    width: 85vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }

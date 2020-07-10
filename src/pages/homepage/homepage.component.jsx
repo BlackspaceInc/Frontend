@@ -41,7 +41,6 @@ const HomePage = () => (
     {/* this section has a list of 4 categories of businesses */}
         {/* <div className='categories'>add popular categories here</div> */}
         <SearchBar/>
-        <p>companies bellow</p>
         <BusinessDirectory/>  
         {/* <CompanyDirectory /> */}
         {/* <div className='other options'> space for more product seelctions </div> */}
