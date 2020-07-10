@@ -78,10 +78,27 @@ Our backend services are User Management Service and Company Management Service:
       	    a. git clone the Company-Management-Service repository from the development branch
       	    b. open command line or powershell or terminal
       	    c. cd into the repository
-      	    d. type [] and press enter
+      	    d. type go run cmd/podinfo/main.go and press enter
+	    e. You should be able to see the graphql data on your website. 
 		
 		B. To run the service and connect to graphQL playgroung 
-      	    a. git clone []. from the deployment branch 
+      	    a. git clone https://github.com/BlackspaceInc/Deployment.git from the master branch 
       	    b. open command line or powershell or terminal
       	    c. cd into the repository
-      	    d. type [] and press enter
+      	    d. type make up and press enter
+	    e. go to http://localhost:9898/gql and type your query to see results
+	    	i. our graphql queries are :
+				getPaginatedCompanies(limit: 5){
+				  name
+				  address
+				  links
+				  number
+				  id
+				}
+
+				getCompanies {
+				  name
+				  address
+				  links
+				  number
+				}
