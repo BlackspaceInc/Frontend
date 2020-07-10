@@ -6,7 +6,6 @@ import './homepage.styles.scss';
 import CompanyDirectory from "../../components/company-directory/company-directory.component";
 import BusinessDirectory from '../../components/business-directory/business-directory.component';
 
-
 import {ApolloClient, InMemoryCache} from 'apollo-boost';
 import { createHttpLink } from "apollo-link-http";
 
@@ -35,7 +34,6 @@ const client = new ApolloClient({
       }),
       cache: new InMemoryCache()
 });
-
 
 const HomePage = () => (
     //This is the directory for blackspace

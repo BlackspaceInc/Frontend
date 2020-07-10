@@ -5,6 +5,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utilities/authentication/authentication';
 
+
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Navbar from "./components/navbar/navbar";
 import HomePage from './pages/homepage/homepage.component';
@@ -15,6 +16,8 @@ import {ApolloProvider} from 'react-apollo';
 
 import './App.css';
 
+import ReactGA from 'react-ga';
+
 /**
  * creating an instance of Appollo client , 
  * the apollo client connects to the backend graphql
@@ -23,9 +26,17 @@ const client = new ApolloClient({
     uri: 'http://localhost:9898/gql'
 });
 
-
-
 const App = () => {
+    //install and run google analytics commands
+    useEffect(() => {
+        const trackingId = "UA-172332932-1"; 
+        ReactGA.initialize(trackingId);
+    
+        //to report page view and search 
+        ReactGA.pageview(window.location.pathname + window.location.search)
+    }, [])
+
+
     useEffect(() => {
             setAuthToken(localStorage.token);
             store.dispatch(loadUser());
