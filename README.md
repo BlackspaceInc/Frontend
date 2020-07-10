@@ -66,3 +66,22 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Connecting to backend 
+# Backend
+This contains the repository code for our backend microservices. 
+Our backend services are User Management Service and Company Management Service:
+
+1. Company Management service handles the business data, server , graphql and others:
+
+		A. To run the service and connect our database, graphql to the frontend:
+      	    a. git clone the Company-Management-Service repository from the development branch
+      	    b. open command line or powershell or terminal
+      	    c. cd into the repository
+      	    d. type [] and press enter
+		
+		B. To run the service and connect to graphQL playgroung 
+      	    a. git clone []. from the deployment branch 
+      	    b. open command line or powershell or terminal
+      	    c. cd into the repository
+      	    d. type [] and press enter
