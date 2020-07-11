@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Card from 'react-bootstrap/Card';
+import {Card, Image} from 'semantic-ui-react';
 
 export default class Business extends React.Component{
     constructor(props){
@@ -10,19 +9,19 @@ export default class Business extends React.Component{
     render(){
         const {name,address,links,number} = this.props.item;
         return(
-            <div className='business-container'>
-                <Card style={{ width: '18rem' }}>
-                {/* <Card.Img src="holder.js/100px270" alt="Card image" /> */}
-                <Card.ImgOverlay>
-                    <Card.Title>{`Company: ${name}`}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{number}</Card.Subtitle>
-                    <Card.Text>
-                       Located at  {address}
-                    </Card.Text>
-                    <Card.Link href={`${links}`}>Go to their website</Card.Link>
-                </Card.ImgOverlay>
-                </Card>
-            </div>
+            
+            <Card
+                image='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
+                wrapped ui={false}
+                header={`${name}`} 
+                meta={`${number}`}
+                description={`${address}`}
+                target='blank'
+                href={`${links}`}
+                color='orange'
+                as='h4'
+            />
+           
         )
     }
     
