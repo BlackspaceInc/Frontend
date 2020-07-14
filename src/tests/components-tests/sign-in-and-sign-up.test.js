@@ -21,4 +21,4 @@ describe('SignInAndSignUpPage', () => {
     it('should render the SignUp Component', () => {
         expect(wrapper.containsMatchingElement(< SignUp/>)).toEqual(true);
       });
-  });
+});

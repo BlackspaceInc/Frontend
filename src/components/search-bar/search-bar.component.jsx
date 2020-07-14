@@ -11,12 +11,7 @@ class SearchBar extends React.Component{
     handleChange  = this.props.handleChange;
     render(){
         return(
-            // <input  
-            //     className='search'
-            //     type='search' 
-            //     placeholder='Type here ...'
-            //     autocomplete="on" 
-            // />
+
             <div>
                 <form className='search-form' >
                     <div className='business-search'>

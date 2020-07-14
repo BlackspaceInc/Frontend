@@ -18,18 +18,10 @@ import './App.css';
 
 import ReactGA from 'react-ga';
 
-/**
- * creating an instance of Appollo client , 
- * the apollo client connects to the backend graphql
- */
-const client = new ApolloClient({
-    uri: 'http://localhost:9898/gql'
-});
-
 const App = () => {
     //install and run google analytics commands
     useEffect(() => {
-        const trackingId = "UA-172332932-1"; 
+        const trackingId = "UA-172332932-1"; //our google analytics id
         ReactGA.initialize(trackingId);
     
         //to report page view and search 
@@ -42,20 +34,18 @@ const App = () => {
             store.dispatch(loadUser());
         }, []);
     return (
-        <ApolloProvider client={client}>
-            <Provider store={store}>
-                <Router>
-                    <Fragment>
-                        <Navbar />
-                        <Switch>
-                            <Route exact path='/'  component={HomePage} />
-                            <Route path='/signin'  component={SignInAndSignUpPage} />
-                            <Route component={Routes} />
-                        </Switch>
-                    </Fragment>
-                </Router>
-            </Provider>
-        </ApolloProvider>
+        <Provider store={store}>
+            <Router>
+                <Fragment>
+                    <Navbar />
+                    <Switch>
+                        <Route exact path='/'  component={HomePage} />
+                        <Route path='/signin'  component={SignInAndSignUpPage} />
+                        <Route component={Routes} />
+                    </Switch>
+                </Fragment>
+            </Router>
+        </Provider>
     );
 };
 

@@ -68,6 +68,7 @@ export default class BusinessDirectory extends React.Component{
 
     const { error, isLoaded, items, searchField} = this.state;
     const filteredCompanies = items.filter(company => company.name.toLowerCase().includes(searchField.toLowerCase()))
+                                  
 
     if (error) {
       return <div>{error.message}</div>;
