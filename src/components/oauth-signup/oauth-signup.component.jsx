@@ -1,5 +1,5 @@
 /*jshint esversion: 9 */
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import {Redirect} from "react-router-dom";
 import {
     isValidSignupCredentials
@@ -10,6 +10,7 @@ import {setAlert} from "../../actions/alert";
 import {register} from "../../actions/auth";
 import "./oauth-signup.styles.scss";
 
+import  {GApageView} from '../../index.js';
 /**
  * Functional Signup Component With Oauth
  * 

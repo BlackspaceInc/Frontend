@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import spinner from "../layout/spinner";
+import {GApageView} from '../../index.js';
 
 /**
  * Functional component providing access to user dashboard

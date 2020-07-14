@@ -13,26 +13,23 @@ import Routes from "./components/routing/routes";
 
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
+import  {initGA} from './index.js';
 
 import './App.css';
 
 import ReactGA from 'react-ga';
 
 const App = () => {
-    //install and run google analytics commands
-    useEffect(() => {
-        const trackingId = "UA-172332932-1"; //our google analytics id
-        ReactGA.initialize(trackingId);
-    
-        //to report page view and search 
-        ReactGA.pageview(window.location.pathname + window.location.search)
-    }, [])
-
-
     useEffect(() => {
             setAuthToken(localStorage.token);
             store.dispatch(loadUser());
         }, []);
+
+    useEffect(() => {
+        initGA();
+        ReactGA.pageview(window.location.pathname +  window.location.search);
+        }, []);
+
     return (
         <Provider store={store}>
             <Router>
