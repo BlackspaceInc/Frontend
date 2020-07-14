@@ -4,7 +4,7 @@ import axios from 'axios';
 import './business-directory.styles.scss';
 import Business from '../business/business.component';
 import SearchBar from '../../components/search-bar/search-bar.component.jsx';
-
+import {connect} from 'react-redux';
 
 export default class BusinessDirectory extends React.Component{
   state = {
@@ -19,7 +19,7 @@ export default class BusinessDirectory extends React.Component{
     // This is the GraphQL query
     const query = `
     query {
-      getPaginatedCompanies(limit: 12)
+      getPaginatedCompanies(limit: 6)
               {
           name
           address
@@ -60,18 +60,14 @@ export default class BusinessDirectory extends React.Component{
     }
   }
 
-  handleChange=(e) => {
-    this.setState({searchField: e.target.value})
+  handleChange = (e) =>{
+    this.setState({searchField:e.target.value})
   }
-
-
 
   render() {
 
-    const { error, isLoaded, items, searchField } = this.state;
-    const filteredItems = items.filter(item =>
-      item.name.toLowerCase().includes(searchField.toLowerCase())
-    )
+    const { error, isLoaded, items, searchField} = this.state;
+    const filteredCompanies = items.filter(company => company.name.toLowerCase().includes(searchField.toLowerCase()))
 
     if (error) {
       return <div>{error.message}</div>;
@@ -83,13 +79,13 @@ export default class BusinessDirectory extends React.Component{
         <div className='company-directory'>
           <div className='search-container'>
             <SearchBar
-              handleChange= {this.handleChange}
+              handleChange={this.handleChange}
             />
           </div>
           <div className='business-list'>
             {
-              items.map(item => (<Business key={item.id} item={item}/>)
-              )}
+              filteredCompanies.map(item => (<Business key={item.id} item={item}/>)
+            )}
           </div>
         </div>
       

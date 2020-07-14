@@ -12,14 +12,15 @@ export default class Business extends React.Component{
             
             <Card
                 image='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
+                href={`${links}`}
                 wrapped ui={false}
                 header={`${name}`} 
                 meta={`${number}`}
                 description={`${address}`}
                 target='blank'
-                href={`${links}`}
                 color='orange'
                 as='h4'
+                className='business'
             />
            
         )
