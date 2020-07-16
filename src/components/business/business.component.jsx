@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Image} from 'semantic-ui-react';
+import {Card} from 'semantic-ui-react';
 
 export default class Business extends React.Component{
     constructor(props){
@@ -11,16 +11,15 @@ export default class Business extends React.Component{
         return(
             
             <Card
+                color='orange'
+                href = {`${links}`}
+                target = 'blank'
                 image='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
-                href={`${links}`}
                 wrapped ui={false}
                 header={`${name}`} 
                 meta={`${number}`}
                 description={`${address}`}
-                target='blank'
-                color='orange'
-                as='h4'
-                className='business'
+                
             />
            
         )
