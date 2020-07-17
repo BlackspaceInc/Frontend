@@ -9,7 +9,7 @@ const FooterPage = () => {
       <div className='footer-content'>
         <div className='footer-section about'> 
           <h1 className='blk-logo-text'>
-            BlkSpace Company
+            BLKSPACE COMPANY
           </h1>
           <h5><span>Connecting you to black-owned business</span></h5>
           <div className='contact'>
@@ -25,7 +25,7 @@ const FooterPage = () => {
         </div>
       </div>
       <div className='footer-bottom'>
-        &copy; BlkSpace 
+        &copy; BLKSPACE
       </div>
     </div>
     // <MDBFooter color="blue" className="font-small pt-4 mt-4 ">
