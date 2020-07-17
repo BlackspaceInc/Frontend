@@ -19,7 +19,7 @@ export default class BusinessDirectory extends React.Component {
     // This is the GraphQL query
     const query = `
     query {
-      getPaginatedCompanies(limit: 80)
+      getPaginatedCompanies(limit: 110)
         {
           name
           address
