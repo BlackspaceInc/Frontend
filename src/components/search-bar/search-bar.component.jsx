@@ -26,7 +26,7 @@ class SearchBar extends React.Component{
                               
                             />
                         </div>
-                        <a type="submit" class="search-button">Search</a>
+                        {/* <a type="submit" class="search-button">Search</a> */}
                     </div>
                 </form>
             </div>
