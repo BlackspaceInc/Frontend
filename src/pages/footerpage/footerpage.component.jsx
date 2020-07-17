@@ -11,7 +11,7 @@ const FooterPage = () => {
           <h1 className='blk-logo-text'>
             BlkSpace Company
           </h1>
-          <p> Lorem ipsum dolor, sit amet</p>
+          <h5><span>Connecting you to black-owned business</span></h5>
           <div className='contact'>
             {/* <span><i className='fa fa-phone'></i> &nbsp; 000-000-0000</span>
             <span><i className='fas fa-envelope'></i>&nbsp; fake@doe.com</span> */}

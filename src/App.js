@@ -10,6 +10,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Navbar from "./components/navbar/navbar";
 import HomePage from './pages/homepage/homepage.component';
 import Routes from "./components/routing/routes";
+import FooterPage from './pages/footerpage/footerpage.component.jsx';
 
 import  {initGA} from './index.js';
 
@@ -38,6 +39,7 @@ const App = () => {
                         <Route path='/signin'  component={SignInAndSignUpPage} />
                         <Route component={Routes} />
                     </Switch>
+                    <FooterPage/>
                 </Fragment>
             </Router>
         </Provider>
