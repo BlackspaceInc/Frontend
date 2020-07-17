@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import './business-directory.styles.scss';
-import Business from '../business/business.component';
+import Pagination from '../pagination/pagination.component.jsx';
 import BusinessList from '../business-list/business-list.component';
 import SearchBar from '../../components/search-bar/search-bar.component.jsx';
-import { Pagination } from 'semantic-ui-react';
 
 export default class BusinessDirectory extends React.Component {
   state = {
@@ -12,7 +11,7 @@ export default class BusinessDirectory extends React.Component {
     isLoaded: false,
     items: [],
     searchField: '',
-    picked: 1,
+    activePage: 1,
   }
 
   componentDidMount() {
@@ -35,11 +34,11 @@ export default class BusinessDirectory extends React.Component {
     const variables = {};
 
     // We call the method here to execute our async function
-    this.getAnime(query, variables)
+    this.getCompaniesFromGQL(query, variables)
 
   }
 
-  getAnime = async (query, variables) => {
+  getCompaniesFromGQL = async (query, variables) => {
     try {
       const response = await axios.post('http://localhost:9898/query', {
         query,
@@ -65,27 +64,19 @@ export default class BusinessDirectory extends React.Component {
     this.setState({ searchField: e.target.value })
   }
 
-  // handlePick = (picked) => {
-  //   if (picked != this.state.picked){
-  //     this.setState({picked});
-  //   }
-  // }
-
-  handlePick = (e, paginationData) => {
-    if (+paginationData.activePage !== this.state.picked) {
-      this.setState({ picked: +paginationData.activePage });
+  handlePick = (_, activePage) => {
+    if (+activePage !== this.state.activePage) {
+      this.setState({ activePage });
     }
   }
 
   render() {
 
-    const { error, isLoaded, items, searchField } = this.state;
+    const { error, isLoaded, items, searchField, activePage } = this.state;
     const filteredCompanies = items.filter(company => company.name.toLowerCase().includes(searchField.toLowerCase()))
-
-
     const totalPerPage = 10;
-    const lowerBound = totalPerPage * (this.state.picked - 1);
-    const upperBound = this.state.picked * totalPerPage;
+    const lowerBound = totalPerPage * (activePage - 1);
+    const upperBound = activePage * totalPerPage;
 
     if (error) {
       return <div>{error.message}</div>;
@@ -101,16 +92,12 @@ export default class BusinessDirectory extends React.Component {
             />
           </div>
           <BusinessList businesses={filteredCompanies.slice(lowerBound, upperBound)} />
-          <Pagination
-            defaultActivePage={1}
-            firstItem={null}
-            lastItem={null}
-            // pointing
-            // secondary
-            totalPages={Math.ceil(filteredCompanies.length / totalPerPage)}
-            onPageChange={this.handlePick}
-          />
-          {/* <Pagination defaultActivePage={5} totalPages={10} /> */}
+          <div className='pagination-kit' >
+            <Pagination
+              totalPages={Math.ceil(filteredCompanies.length / totalPerPage)}
+              activePage={activePage}
+              onPageChange={this.handlePick} />
+          </div>
         </div>
 
       );
