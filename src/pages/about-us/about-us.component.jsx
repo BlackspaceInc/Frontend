@@ -2,7 +2,7 @@ import React from 'react';
 import './about-us.styles.scss';
 
 
-const ABOUT_US = () => {
+const AboutUs = () => {
 
     return(
         <div className='blk-about'>
@@ -92,4 +92,4 @@ const ABOUT_US = () => {
     )
 }
 
-export default ABOUT_US;
+export default AboutUs;
