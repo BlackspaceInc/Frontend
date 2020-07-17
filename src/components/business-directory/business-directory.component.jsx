@@ -40,7 +40,7 @@ export default class BusinessDirectory extends React.Component {
 
   getCompaniesFromGQL = async (query, variables) => {
     try {
-      const response = await axios.post('http://localhost:9898/query', {
+      const response = await axios.post('http://company-management-service:9898/query', {
         query,
         variables
       });
