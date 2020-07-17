@@ -17,7 +17,6 @@ class SignIn extends React.Component {
 
     handleSubmit = event =>{
         event.preventDefault(); 
-        const {email,password}= this.state; //modify
 
         try {
             this.setState({
@@ -60,9 +59,7 @@ class SignIn extends React.Component {
                     <div className='buttons'>
                     <CustomButton type='submit'> Sign In </CustomButton>
                     </div>
-                    
                 </form>
-
             </div>
         )
     }

@@ -6,6 +6,7 @@ import NotFound from "../layout/layout";
 import Alert from "../layout/alert";
 import Login from "../custom-sign-in/custom-sign-in.component";
 import OauthLogin from "../oauth-signup/oauth-signup.component";
+import AboutUs from '../../pages/about-us/about-us.component';
 
 /**
  * Common Routing Parent Handler 
@@ -21,6 +22,7 @@ const Routes = props => {
                 <Route exact path="/login" component={Login} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={OauthLogin}/>
+                <Route exact path="/about-us" component={AboutUs}/>
                 <Route component={NotFound} />
             </Switch>
         </section>

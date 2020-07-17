@@ -1,0 +1,25 @@
+.company-directory{
+  width: 85vw;
+  
+  .search-container{
+    width: 98%;
+    margin-bottom: 20px;
+    margin-left: 25px;
+  }
+
+  .business-list {
+    width: auto;
+    display: grid ;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    
+  }
+
+  .pagination-kit{
+    text-align: center;
+  }
+
+}
+
+
+

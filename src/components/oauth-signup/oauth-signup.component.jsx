@@ -10,6 +10,8 @@ import {setAlert} from "../../actions/alert";
 import {register} from "../../actions/auth";
 import "./oauth-signup.styles.scss";
 
+import FormInput from '../../components/form-input/form-input.component.jsx';
+import CustomButton from '../../components/custom-button/custom-button.component.jsx';
 /**
  * Functional Signup Component With Oauth
  * 
@@ -45,10 +47,10 @@ const OauthSignupComponent = ({setAlert, register, isAuthenticated }) => {
 
     return (
         <Fragment>
-        <div id="login-box">
+        <div id="login-box" className='sign-up'>
             <div className="left">
                 <h1>Sign up with email</h1>
-                <form onSubmit={onSubmit}>
+                {/* <form onSubmit={onSubmit}>
                     <input type="firstname" name="firstname" placeholder="FirstName" value={firstname} onChange={onChange} required/>
                     <input type="lastname" name="lastname" placeholder="LastName" value={lastname} onChange={onChange} required/>
                     <input type="username" name="username" placeholder="UserName" value={username} onChange={onChange} required/>
@@ -56,16 +58,60 @@ const OauthSignupComponent = ({setAlert, register, isAuthenticated }) => {
                     <input type="password" name="password" placeholder="Password" value={password} onChange={onChange} required/>
                     <input type="password" name="password2" placeholder="Confirm Password" value={password2} onChange={onChange} required/>
                     <input type="submit" className="btn btn-primary" value="Submit" />
+                </form> */}
+                <form className='sign-up-form' onSubmit={onSubmit}>
+                    <FormInput
+                        type="firstname" 
+                        name="firstname" 
+                        placeholder="FirstName" 
+                        value={firstname} 
+                        onChange={onChange} 
+                        required
+                    />
+                    <FormInput
+                        type="lastname" 
+                        name="lastname" 
+                        placeholder="LastName" 
+                        value={lastname} 
+                        onChange={onChange} 
+                        required
+                    />
+                    <FormInput
+                        type="username" 
+                        name="username" 
+                        placeholder="UserName" 
+                        value={username} 
+                        onChange={onChange} 
+                        required
+                    />
+                    <FormInput
+                        type="email" 
+                        name="email" 
+                        placeholder="E-mail" 
+                        value={email} 
+                        onChange={onChange} 
+                        required
+                    />
+                    <FormInput
+                        type="password" 
+                        name="password" 
+                        placeholder="Password" 
+                        value={password} 
+                        onChange={onChange} 
+                        required
+                    />
+                    <FormInput
+                        type="password" 
+                        name="password2" 
+                        placeholder="Confirm Password" 
+                        value={password2} 
+                        onChange={onChange} 
+                        required
+                    />
+                    <CustomButton type='submit'  value='Submit'>SIGN UP </CustomButton>
                 </form>
             </div>
 
-            <div className="right">
-                <span className="loginwith">Sign up with<br/>social network</span>
-                <button className="social-signup facebook">Sign up with Facebook</button>
-                <button className="social-signup linkedin">Sign up with LinkedIn</button>
-                <button className="social-signup twitter">Sign up with Twitter</button>
-                <button className="social-signup google">Sign up with Google+</button>
-            </div>
         </div>
         </Fragment>
     )
