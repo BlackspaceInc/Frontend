@@ -1,5 +1,5 @@
 /*jshint esversion: 9 */
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment, useState} from "react";
 import {Redirect} from "react-router-dom";
 import {
     isValidSignupCredentials

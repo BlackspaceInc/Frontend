@@ -1,13 +1,8 @@
 import React from 'react';
 
-import {SearchBar} from '../../components/search-bar/search-bar.component.jsx';
 import FooterPage from '../../pages/footerpage/footerpage.component';
-
 import './homepage.styles.scss';
-import CompanyDirectory from "../../components/company-directory/company-directory.component";
 import BusinessDirectory from '../../components/business-directory/business-directory.component';
-
-import store from '../../store';
 
 
 const HomePage = () => (

@@ -3,7 +3,7 @@ export var isEmpty =  value => value == null || false || (typeof value === "obje
 export var containsInteger =  value => value.match(/\d+/g);
 export var isValidSignupCredentials = (firstname,lastname, email, username, password, password2) => {
 	if (password !== password2) {
-		return 'Passwords do not match', 'danger';
+		return 'Passwords do not match, danger';
 	}
 
 	if(password.length <= 10){

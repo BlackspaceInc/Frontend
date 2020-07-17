@@ -11,8 +11,6 @@ import Navbar from "./components/navbar/navbar";
 import HomePage from './pages/homepage/homepage.component';
 import Routes from "./components/routing/routes";
 
-import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
 import  {initGA} from './index.js';
 
 import './App.css';
