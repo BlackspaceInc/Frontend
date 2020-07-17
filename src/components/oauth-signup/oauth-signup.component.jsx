@@ -61,22 +61,52 @@ const OauthSignupComponent = ({setAlert, register, isAuthenticated }) => {
                 </form> */}
                 <form className='sign-up-form' onSubmit={onSubmit}>
                     <FormInput
-                        type="firstname" name="firstname" placeholder="FirstName" value={firstname} onChange={onChange} required
+                        type="firstname" 
+                        name="firstname" 
+                        placeholder="FirstName" 
+                        value={firstname} 
+                        onChange={onChange} 
+                        required
                     />
                     <FormInput
-                        type="lastname" name="lastname" placeholder="LastName" value={lastname} onChange={onChange} required
+                        type="lastname" 
+                        name="lastname" 
+                        placeholder="LastName" 
+                        value={lastname} 
+                        onChange={onChange} 
+                        required
                     />
                     <FormInput
-                        type="username" name="username" placeholder="UserName" value={username} onChange={onChange} required
+                        type="username" 
+                        name="username" 
+                        placeholder="UserName" 
+                        value={username} 
+                        onChange={onChange} 
+                        required
                     />
                     <FormInput
-                        type="email" name="email" placeholder="E-mail" value={email} onChange={onChange} required
+                        type="email" 
+                        name="email" 
+                        placeholder="E-mail" 
+                        value={email} 
+                        onChange={onChange} 
+                        required
                     />
                     <FormInput
-                        type="password" name="password" placeholder="Password" value={password} onChange={onChange} required
+                        type="password" 
+                        name="password" 
+                        placeholder="Password" 
+                        value={password} 
+                        onChange={onChange} 
+                        required
                     />
                     <FormInput
-                        type="password" name="password2" placeholder="Confirm Password" value={password2} onChange={onChange} required
+                        type="password" 
+                        name="password2" 
+                        placeholder="Confirm Password" 
+                        value={password2} 
+                        onChange={onChange} 
+                        required
                     />
                     <CustomButton type='submit'  value='Submit'>SIGN UP </CustomButton>
                 </form>
