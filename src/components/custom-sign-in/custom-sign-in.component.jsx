@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import FormInput from '../../components/form-input/form-input.component';
+import CustomButton from '../../components/custom-button/custom-button.component';
 
 // define login component function
 /**
@@ -38,10 +40,7 @@ const CustomSignInComponent = ({ login, isAuthenticated }) => {
     return (
         <Fragment>
             <h1 className="large text-primary">Sign In</h1>
-            <p className="lead">
-                <i className="fas fa-user" /> Sign Into Your Account
-            </p>
-            <form className="form" onSubmit={onSubmit}>
+            {/* <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <input
                         type="text"
@@ -66,7 +65,33 @@ const CustomSignInComponent = ({ login, isAuthenticated }) => {
             </form>
             <p className="my-1">
                 Don't have an account? <Link to="/register">Sign Up</Link>
-            </p>
+            </p> */}
+            <div className='signin'>
+                <form onSubmit={onSubmit}>
+                    <FormInput 
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        value={username}
+                        onChange={onChange}
+                        required
+                    />
+                    <FormInput 
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={password}
+                        onChange={onChange}
+                        required
+                    />
+                    <div className='buttons'>
+                    <CustomButton type='submit'> Sign In </CustomButton>
+                    </div>
+                </form>
+                <p className="my-1">
+                    Don't have an account? <Link to="/register">Sign Up</Link>
+                </p>
+            </div>
         </Fragment>
     );
 };

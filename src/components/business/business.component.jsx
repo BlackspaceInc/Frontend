@@ -2,9 +2,6 @@ import React from 'react';
 import {Card} from 'semantic-ui-react';
 
 export default class Business extends React.Component{
-    constructor(props){
-        super(props);
-    }
 
     render(){
         const {name,address,links,number} = this.props.item;
