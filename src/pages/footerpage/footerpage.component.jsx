@@ -13,14 +13,14 @@ const FooterPage = () => {
           </h1>
           <p> Lorem ipsum dolor, sit amet</p>
           <div className='contact'>
-            <span><i className='fa fa-phone'></i> &nbsp; 000-000-0000</span>
-            <span><i className='fas fa-envelope'></i>&nbsp; fake@doe.com</span>
+            {/* <span><i className='fa fa-phone'></i> &nbsp; 000-000-0000</span>
+            <span><i className='fas fa-envelope'></i>&nbsp; fake@doe.com</span> */}
           </div>
           <div className='socials'>
-            <SocialIcon network="twitter" url='#' style={{ height: 25, width: 25 }} />
-            <SocialIcon network="instagram" url='#' style={{ height: 25, width: 25 }} />
-            <SocialIcon network="facebook" url='#' style={{ height: 25, width: 25 }} />
-            <SocialIcon network="linkedin" url='#' style={{ height: 25, width: 25 }} />
+            <SocialIcon network="twitter" url='#' style={{ height: 25, width: 25, margin:5}} />
+            <SocialIcon network="instagram" url='#' style={{ height: 25, width: 25, margin:5}} />
+            <SocialIcon network="facebook" url='#' style={{ height: 25, width: 25, margin:5 }} />
+            <SocialIcon network="linkedin" url='#' style={{ height: 25, width: 25, margin:5 }} />
           </div>
         </div>
       </div>
