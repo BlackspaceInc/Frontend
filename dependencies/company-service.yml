@@ -10,5 +10,3 @@ services:
     restart: always
     networks:
       - net
-    volumes:
-      - '.:/go/src/github.com/BlackspaceInc/company-management-service'

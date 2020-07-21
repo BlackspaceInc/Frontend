@@ -11,7 +11,3 @@ services:
           NAME: "frontend-service"
       networks:
           - net
-
-networks:
-    net:
-        driver: bridge

@@ -4,6 +4,8 @@ import './business-directory.styles.scss';
 import Pagination from '../pagination/pagination.component.jsx';
 import BusinessList from '../business-list/business-list.component';
 import SearchBar from '../../components/search-bar/search-bar.component.jsx';
+import { serviceAddressSubscript } from '../../utilities/addressResolution/addressResolution';
+import { backend } from '../../global';
 
 export default class BusinessDirectory extends React.Component {
   state = {
@@ -40,7 +42,9 @@ export default class BusinessDirectory extends React.Component {
 
   getCompaniesFromGQL = async (query, variables) => {
     try {
-      const response = await axios.post('http://localhost:9898/query', {
+      console.log("company management service address : "  + backend.company_management_service)
+
+      const response = await axios.post(backend.company_management_service, {
         query,
         variables
       });
