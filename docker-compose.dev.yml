@@ -4,13 +4,16 @@ services:
     container_name: frontend-service
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
       - "8000:80"
     labels:
       NAME: "frontend-service"
     networks:
       - net
+    depends_on:
+      - user-service
+      - company-management-service
   
   #frontend:
   #  build:
