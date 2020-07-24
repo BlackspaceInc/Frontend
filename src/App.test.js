@@ -1,7 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import Header from './components/header/header.component';
+import {shallow} from 'enzyme';
+
 import App from './App';
 
-it('renders without crashing', () => {
-  shallow(<App />);
+describe('App', () => {
+  let wrapper;
+
+  beforeEach(() => wrapper = shallow(<App />));
+
+
+  it('should render the Header Component', () => {
+    expect(wrapper.containsMatchingElement(< Header/>)).toEqual(true);
+  });
+
+
 });

@@ -4,11 +4,10 @@ import {Card} from 'semantic-ui-react';
 export default class Business extends React.Component{
 
     render(){
-        const {name,address,links,number} = this.props.item;
+        const {name,address,links,number} = this.props;
         return(
             
             <Card
-                color='orange'
                 href = {`${links}`}
                 target = 'blank'
                 image='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
