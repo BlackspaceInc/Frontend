@@ -13,8 +13,11 @@ NETWORKS:=dependencies/networks.yml
 USER_SERVICE:=dependencies/user-service.yml
 FRONTEND_SERVICE:=dependencies/frontend-service.yml
 
-start_development:
-	docker-compose -f docker-compose.dev.yml up
+start_backend:
+	docker-compose -f docker-compose.dev.yml up -d
+
+start: start_backend
+	npm start
 
 stop_development:
 	docker-compose -f docker-compose.dev.yml down --remove-orphans

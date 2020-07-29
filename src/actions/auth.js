@@ -20,7 +20,7 @@ import {isEmpty} from "../utilities/validation/validation";
  */
 export const loadUser = () => async (dispatch) => {
     try {
-        const res = await axios.get(backend.api_location + "/v1/user/login");
+        const res = await axios.get(backend.user_service + "/user/login");
 
         if(isEmpty(res.data)){
             throw "no data returned";
@@ -59,7 +59,7 @@ export const register = ({ firstname, lastname, email, username, password }) => 
     const body = JSON.stringify({ firstname, lastname, email, username, password });
 
     try {
-        const res = await axios.post(backend.api_location + '/v1/user/signup', body, config);
+        const res = await axios.post(backend.user_service + '/user/signup', body, config);
 
         if(isEmpty(res.data)){
             throw "no data returned";
@@ -102,7 +102,7 @@ export const register = ({ firstname, lastname, email, username, password }) => 
     const body = JSON.stringify({ username, password });
 
     try {
-        const res = await axios.post(backend.api_location + '/v1/user/login', body, config);
+        const res = await axios.post(backend.user_service + '/user/login', body, config);
         if(isEmpty(res.data)){
             throw "no data returned";
         }

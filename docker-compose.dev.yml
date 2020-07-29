@@ -1,32 +1,27 @@
 version: '3.7'
 services:
-  frontend-service:
-    container_name: frontend-service
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:80"
-    labels:
-      NAME: "frontend-service"
-    networks:
-      - net
-  
-  #frontend:
+  #frontend-service:
+  #  container_name: frontend-service
   #  build:
   #    context: .
   #    dockerfile: Dockerfile.dev
   #  ports:
-  #    - 8000:3000
-  #  env_file: .env
+  #    - "8000:80"
+  #  labels:
+  #    NAME: "frontend-service"
+  #  volumes:
+  #    - .:/app
+  #    - nodemodules:/app/node_modules
+  #  networks:
+  #    - net
+  #  depends_on:
+  #   - user-service
+  #    - company-management-service
+  #  env_file:
+  #    - .env
   #  environment:
   #    - NODE_ENV=development
   #    - CHOKIDAR_USEPOLLING=true
-  #  volumes: 
-  #    - .:/app/
-  #    - /app/node_modules
-  #  networks: 
-  #    - net
 
   redis:
     image: redis
@@ -159,3 +154,4 @@ networks:
 
 volumes:
   rabbitmqstats_data: {}
+  nodemodules: {}
