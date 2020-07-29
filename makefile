@@ -14,7 +14,7 @@ USER_SERVICE:=dependencies/user-service.yml
 FRONTEND_SERVICE:=dependencies/frontend-service.yml
 
 start_development:
-	docker-compose -f docker-compose.dev.yml up
+	docker-compose -f docker-compose.dev.yml up --build
 
 stop_development:
 	docker-compose -f docker-compose.dev.yml down --remove-orphans

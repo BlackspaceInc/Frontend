@@ -4,16 +4,24 @@ services:
     container_name: frontend-service
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile.dev
     ports:
       - "8000:80"
     labels:
       NAME: "frontend-service"
+    volumes:
+      - .:/app
+      - nodemodules:/app/node_modules
     networks:
       - net
     depends_on:
       - user-service
       - company-management-service
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
   
   #frontend:
   #  build:
@@ -162,3 +170,4 @@ networks:
 
 volumes:
   rabbitmqstats_data: {}
+  nodemodules: {}
