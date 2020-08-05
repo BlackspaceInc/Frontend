@@ -1,0 +1,21 @@
+.card-component{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+    border-radius: 25px;
+
+    .business-logo{
+       width: 80%;
+    }
+
+    .business-phone{
+        font-size: 16px;
+    }
+}
+
+.card-component:hover {
+    top: -10px;
+    background-color: coral;
+}

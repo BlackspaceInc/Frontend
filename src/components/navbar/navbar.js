@@ -39,11 +39,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <ul>
             <li>
-                <Link to='/profiles'>Consumers</Link>
+                <Link to='/'>Businesses</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to='/profiles'>Businesses</Link>
-            </li>
+            </li> */}
             <li>
                 <Link to='/about-us'>About Us</Link>
             </li>
