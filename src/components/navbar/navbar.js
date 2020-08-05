@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import blklogo from '../../assets/logo.ico';
-
+import './navbar.styles.scss';
 
 /**
  * Navigation Bar Function Component
@@ -39,11 +39,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <ul>
             <li>
-                <Link to='/profiles'>Consumers</Link>
+                <Link to='/'>Businesses</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to='/profiles'>Businesses</Link>
-            </li>
+            </li> */}
             <li>
                 <Link to='/about-us'>About Us</Link>
             </li>
@@ -57,7 +57,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
 
     return (
-        <nav className='navbar bg-dark'>
+        <nav className='navbar'>
             <Link className='blk-logo-container' to='/'>
             <img className='logo' src={blklogo} alt='blackpsace logo'/>
             </Link>
