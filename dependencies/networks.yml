@@ -3,10 +3,6 @@ version: '3.7'
 networks:
   net:
     driver: bridge
-  ext:
-    external: true
 
 volumes:
-  prometheus_data: {}
-  grafana_data: {}
   rabbitmqstats_data: {}

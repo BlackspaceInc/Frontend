@@ -1,9 +1,10 @@
 import axios from 'axios';
 import store from '../store';
 import { LOGOUT } from '../actions/types';
+import { backend } from '../../global';
 
 const api = axios.create({
-    baseURL: 'http://user-service:9100/',
+    baseURL: backend.user_service,
     headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : 'http://localhost:8000',

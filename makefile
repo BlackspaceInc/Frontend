@@ -13,16 +13,25 @@ NETWORKS:=dependencies/networks.yml
 USER_SERVICE:=dependencies/user-service.yml
 FRONTEND_SERVICE:=dependencies/frontend-service.yml
 
-stop_test_env:
-	@echo "stopping locally running containers"
-	docker-compose down
+start_backend:
+	docker-compose -f docker-compose.dev.yml up -d
 
-up_test_env:
+start: start_backend
+	npm start
+
+stop_development:
+	docker-compose -f docker-compose.dev.yml down --remove-orphans
+
+stop_testing:
+	@echo "stopping locally running containers"
+	docker-compose -f $(AUTH_SERVICE) -f $(COMPANY_SERVICE) -f $(USER_SERVICE) -f $(FRONTEND_SERVICE) -f $(NETWORKS) down
+
+start_testing:
 	@echo "starting containers via docker-compose locally"
 	docker-compose -f $(AUTH_SERVICE) -f $(COMPANY_SERVICE) -f $(USER_SERVICE) -f $(FRONTEND_SERVICE) -f $(NETWORKS) config
-	docker-compose -f $(AUTH_SERVICE) -f $(COMPANY_SERVICE) -f $(USER_SERVICE) -f $(FRONTEND_SERVICE) -f $(NETWORKS) up --remove-orphans
+	docker-compose -f $(AUTH_SERVICE) -f $(COMPANY_SERVICE) -f $(USER_SERVICE) -f $(FRONTEND_SERVICE) -f $(NETWORKS) up --remove-orphans 
 
-build_up_test_env:
+build_and_start_testing:
 	docker-compose -f $(AUTH_SERVICE) -f $(COMPANY_SERVICE) -f $(USER_SERVICE) -f $(FRONTEND_SERVICE) -f $(NETWORKS) build
 	docker-compose -f $(AUTH_SERVICE) -f $(COMPANY_SERVICE) -f $(USER_SERVICE) -f $(FRONTEND_SERVICE) -f $(NETWORKS) up --remove-orphans
 
@@ -35,7 +44,7 @@ run-container: build-container
 push-container: build-container
 	docker push $(DOCKER_IMAGE_NAME):$(VERSION)
 
-spinup-prod-env:
+start_prod_testing:
 	docker-compose -f docker-compose.prod.yml up
 
 create_manifests:
