@@ -6,15 +6,10 @@ import BusinessDirectory from '../../components/business-directory/business-dire
 
 
 const HomePage = () => (
-    //This is the directory for blackspace
+    //This contains the BusinessDirectory component, comprised of other components
+    // and giving us access to the list of businesses
     <div className='homepage'> 
-    {/* this section has a list of 4 categories of businesses */}
-        {/* <div className='categories'>add popular categories here</div> */}
-        {/* <SearchBar/> */}
         <BusinessDirectory/>  
-        {/* <CompanyDirectory /> */}
-        {/* <div className='other options'> space for more product seelctions </div> */}
-        <FooterPage/>
     </div>
 );
 

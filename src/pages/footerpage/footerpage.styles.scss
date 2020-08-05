@@ -1,10 +1,10 @@
 .blk-main-footer{
-    background-color: lightcoral;
-    color: black;
+    background-color: #223843;
+    color: white;
+    font-family: 'Raleway', sans-serif;
     height: 300px;
     width: 100%;
     position: relative;
-    border: 1px solid red;
 
     .footer-content{
         height: 250px;
@@ -13,13 +13,14 @@
         .footer-section{
             flex: 1;
             padding:25px;
-            border: 1px solid purple;
+            border: 1px solid #223843;
         }
     }
 
     .footer-bottom{
-        background: plum;
-        color: black;
+        background-color: #223843;
+        color: white;
+        font-family: 'Raleway', sans-serif;
         height: 50px;
         width: 100%;
         text-align: center;
@@ -27,5 +28,6 @@
         bottom: 0px;
         left: 0px;
         padding-top: 20px;
+        border-top: 1px solid white;
     }
 }
