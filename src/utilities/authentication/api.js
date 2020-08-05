@@ -3,10 +3,10 @@ import store from '../store';
 import { LOGOUT } from '../actions/types';
 
 const api = axios.create({
-    baseURL: 'http://localhost:9100/',
+    baseURL: 'http://user-service:9100/',
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : 'http://localhost:3005',
+        'Access-Control-Allow-Origin' : 'http://localhost:8000',
         'Access-Control-Allow-Credentials': 'true'
     },
 });

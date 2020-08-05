@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import blklogo from '../../assets/logo.ico';
+import './navbar.styles.scss';
 
 /**
  * Navigation Bar Function Component
@@ -55,12 +57,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
 
     return (
-        <nav className='navbar bg-dark'>
-            <h1>
-                <Link to='/'>
-                    <i className='fas fa-code' /> BlackSpace
-                </Link>
-            </h1>
+        <nav className='navbar'>
+            <Link className='blk-logo-container' to='/'>
+            <img className='logo' src={blklogo} alt='blackpsace logo'/>
+            </Link>
+
             {!loading && (
                 <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
             )}
